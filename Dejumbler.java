@@ -1,15 +1,21 @@
 import java.io.*;
-//all words getting added to list OK
+
 import java.util.ArrayList;
+
+import java.util.Scanner;
 public class Dejumbler
 {
    static ArrayList<String> listWords = new ArrayList<String>();
    public static void main(String args[])
    {
-      String word = "label"; 
+      Scanner input = new Scanner(System.in);
+       System.out.print("Enter jumbled word: ");
+      
+      String word = input.nextLine(); 
       fillList();
       System.out.println(solve(word.toLowerCase()));
    }
+   //fills the arraylist of all words in english dictionary --> maybe only add words that have a first letter
    public static void fillList()
    {
       try{
@@ -22,6 +28,8 @@ public class Dejumbler
       }
       catch(Exception e) {System.out.print("Error reading file");}
    }
+   
+   //This is the solve method, change the method used if antoher way to solve is found
    
    public static String solve(String input) //try a unique id to each word -- maybe multiplication
    {
@@ -76,6 +84,9 @@ public class Dejumbler
          
       return out;
    }
-            
+   public static String getFirstLetter(String input)
+   {
+      return input.substring(0,1);
+   }         
                
 }
